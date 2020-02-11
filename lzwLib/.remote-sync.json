@@ -1,0 +1,18 @@
+{
+  "logger": {
+    "title": "Remote Sync"
+  },
+  "uploadOnSave": true,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "ux-2.labs.encs.vancouver.wsu.edu",
+  "target": "~/Desktop/cs360assignment1/workspace",
+  "ignore": [
+    ".remote-sync.json",
+    ".git/**"
+  ],
+  "username": "ben.mikailenko",
+  "password": "W23w23w23@",
+  "watch": [],
+  "transport": "scp"
+}
