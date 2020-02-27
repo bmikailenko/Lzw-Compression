@@ -28,7 +28,7 @@ int main(int argc, char * argv[]){
 
 	void *context = io;
 
-	int x = lzwEncode(16, 16, readFunc, writeFunc, context);
+	int x = lzwDecode(8, 16, readFunc, writeFunc, context);
 
 	if (x == false) {
 		printf("failed!!\n");

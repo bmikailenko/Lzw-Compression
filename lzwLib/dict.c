@@ -26,12 +26,12 @@ void deleteDictDeep(Dict* dict) {
     for(s = dict->table[i]; s != 0; s = next) {     // at each entry
       next = s->next;                               // traverse linked lists
 
-      deleteSequence(s);                            // free the sequences
+      //deleteSequence(s);                            // free the sequences
     }
   }
 
-  free(dict->table);                                // free the table
-  free(dict);                                       // free the dict
+  //free(dict->table);                                // free the table
+  //free(dict);                                       // free the dict
 
 }
 

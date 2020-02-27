@@ -49,17 +49,18 @@ bool lzwEncode(unsigned int bits, unsigned int maxBits,
 
       if (searchDict(dict, x) == true) {				// if x is in the dictionary,
 																								// w = x
-				free(w);																// boring data swap...
-        w = newSequence(x->code,6000);
-				w->data.bytes[0] = x->data.bytes[0];
-				w->data.bytes[1] = x->data.bytes[1];
-				w->data.bytes[2] = x->data.bytes[2];
-				w->data.bytes[3] = x->data.bytes[3];
-				w->data.bytes[4] = x->data.bytes[4];
-				w->data.bytes[5] = x->data.bytes[5];
-				w->data.bytes[6] = x->data.bytes[6];
-				w->data.bytes[7] = x->data.bytes[7];
-				free(x);																// and go to begenning of loop
+				w = x;
+				// free(w);																// boring data swap...
+        // w = newSequence(x->code,6000);
+				// w->data.bytes[0] = x->data.bytes[0];
+				// w->data.bytes[1] = x->data.bytes[1];
+				// w->data.bytes[2] = x->data.bytes[2];
+				// w->data.bytes[3] = x->data.bytes[3];
+				// w->data.bytes[4] = x->data.bytes[4];
+				// w->data.bytes[5] = x->data.bytes[5];
+				// w->data.bytes[6] = x->data.bytes[6];
+				// w->data.bytes[7] = x->data.bytes[7];
+				// free(x);																// and go to begenning of loop
 
       } else {																	// if x is not in dictionary
 
@@ -73,8 +74,7 @@ bool lzwEncode(unsigned int bits, unsigned int maxBits,
 																									// isn't greater then 2^bits)
           bits++;
           outputBits(output, bits, tempSequence->code);
-        }
-        else{
+        } else {
           outputBits(output, bits, tempSequence->code);
         }
 
@@ -82,7 +82,7 @@ bool lzwEncode(unsigned int bits, unsigned int maxBits,
           insertDict(dict, x, nextCode);				// add x to the dictionary now
           nextCode++;
         }
-				free(w);
+				//free(w);
         w = newSequence(c, 6000);		 // make w so that it holds just code now
       }
     }

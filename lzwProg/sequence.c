@@ -13,13 +13,13 @@ Sequence* newSequence(unsigned char firstByte, unsigned long long hashSize) {
   newSequence->bucket = (newSequence->hash % hashSize);
   newSequence->next = NULL;
   newSequence->data.bytes[0] = firstByte; // allocating every entry in bytes for
-  newSequence->data.bytes[1] = 0;
-  newSequence->data.bytes[2] = 0;         // no
-  newSequence->data.bytes[3] = 0;
-  newSequence->data.bytes[4] = 0;         // loss
-  newSequence->data.bytes[5] = 0;
-  newSequence->data.bytes[6] = 0;         // of data
-  newSequence->data.bytes[7] = 0;
+  // newSequence->data.bytes[1] = 0;
+  // newSequence->data.bytes[2] = 0;         // no
+  // newSequence->data.bytes[3] = 0;
+  // newSequence->data.bytes[4] = 0;         // loss
+  // newSequence->data.bytes[5] = 0;
+  // newSequence->data.bytes[6] = 0;         // of data
+  // newSequence->data.bytes[7] = 0;
 
   return newSequence;
 }
@@ -30,6 +30,7 @@ void deleteSequence(Sequence* sequence) {
 
 Sequence* copySequenceAppending(Sequence* sequence, unsigned char newByte, unsigned long long hashSize) {
   Sequence* tempSequence = newSequence(sequence->data.bytes[0], hashSize);
+  //tempSequence->hash = newByte;
   unsigned long long newHash = newByte;
 
   tempSequence->length = sequence->length + 1;
@@ -40,11 +41,12 @@ Sequence* copySequenceAppending(Sequence* sequence, unsigned char newByte, unsig
                                                   // a new byte
     tempSequence->data.bytes[i] = sequence->data.bytes[i];
     newHash += tempSequence->data.bytes[i];
+    //tempSequence->hash += tempSequence->data.bytes[i];
     i++;
   }
 
   tempSequence->data.bytes[i] = newByte;                 // add the new byte
-  tempSequence->hash *= 27;                              // update the hash
+  tempSequence->hash *= newHash * 27;                              // update the hash
   tempSequence->bucket = tempSequence->hash % hashSize;  // and the bucket
 
   return tempSequence;

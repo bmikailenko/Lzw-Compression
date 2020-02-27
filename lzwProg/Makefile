@@ -3,7 +3,7 @@ INCLUDE=include/
 CFLAGS=-c -std=c99 -Wall -pedantic -I$(INCLUDE) -g
 
 main: main.o liblzw.a
-	gcc -o main main.o -LDocuments/CS/lzw/lzwProg -llzw
+	gcc -o main main.o -L ~/Documents/CS/lzw/lzwProg -llzw
 
 liblzw.a: lzwEncode.o lzwDecode.o sequence.o dict.o bitStream.o
 	ar cru liblzw.a lzwEncode.o lzwDecode.o sequence.o dict.o bitStream.o
